@@ -2,6 +2,14 @@
 ## Project Overview
 Sparkify, a music streaming startup, has significant growth in their user base and song database. To support deeper user behavior analytics, Sparkify wants to move their data infrastructure to the cloud. 
 This database provides a centralized, scalable, and structured environment for Sparkify's analytical workloads. With increasing volumne and complexity of data, traditional processing methods were becoming less effecient. Implementing a cloud-based ETL pipeline and dimensional model in Redshift allows Sparkify to find insights into what songs their users are listening to much easier and more efficiently.
+## Table of Content
+
+- [Database Schema](#database-schema)
+- [ETL Pipeline](#etl-pipeline)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Sample Queries](#sample-queries)
+
 ## Database Schema
 This database uses a star schema with the following tables:
 
