@@ -97,7 +97,7 @@ project-root/
 └── README.md              # Project documentation
 ```
 ## Usage
-1. Make sure you have a Redshift cluster and an IAM Role associated with it. If not, create one.
+1. Make sure you have a Redshift cluster available and an IAM Role associated with it. If not, create one.
 2. Add Redshift database and IAM Role info to `dwh.cfg`.
 
     Note: `HOST` means the `Endpoint` without the port number (everything before the `:`)
