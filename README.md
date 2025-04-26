@@ -116,4 +116,5 @@ Table: staging_songs, Row Count: 383950
 ```
 
 ## Acknowledgements
-This project was developed as part of the Udacity Data Engineering with AWS Nanodegree, with guidance from course materials.
+- This project was developed as part of the Udacity Data Engineering with AWS Nanodegree, with guidance from course materials.
+- [AWS Redshift documentation](https://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
