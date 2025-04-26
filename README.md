@@ -1,8 +1,8 @@
 # Sparkify Data Warehouse Project
 ## Project Overview
 Sparkify, a music streaming startup, has significant growth in their user base and song database. To support deeper user behavior analytics, Sparkify wants to move their data infrastructure to the cloud. 
-This database provides a centralized, scalable, and structured environment for Sparkify's analytical workloads. With increasing volumne and complexity of data, traditional processing methods were becoming less effecient. Implementing a cloud-based ETL pipeline and dimensional model in Redshift allows Sparkify to find insights into what songs their users are listening to much easier and more efficiently.
-## Table of Content
+This database provides a centralized, scalable, and structured environment for Sparkify's analytical workloads. With increasing volumne and complexity of data, traditional processing methods were becoming less effecient. Implementing a cloud-based ETL pipeline and dimensional model in Redshift allows Sparkify to find insights into what songs their users are listening to more easily and more efficiently.
+## Table of Contents
 
 - [Database Schema](#database-schema)
 - [ETL Pipeline](#etl-pipeline)
@@ -37,7 +37,7 @@ This database uses a star schema with the following tables:
 - **gender** VARCHAR
 - **level** VARCHAR(4)
 
-`songs` - songs in music database
+`songs` - songs in the music database
 
 - **song_id** VARCHAR(18)
 - **title** VARCHAR(65535)
@@ -45,11 +45,10 @@ This database uses a star schema with the following tables:
 - **year** INTEGER
 - **duration** FLOAT
 
-`artists` - artists in music database
+`artists` - artists in the music database
 
 - **artist_id** VARCHAR(18)
 - **name** VARCHAR(65535)
-    - Some `artist_name` exceed the default maximum length (256) of `VARCHAR` in Redshift
 - **location** VARCHAR(65535)
 - **latitude** FLOAT
 - **longitude** FLOAT
@@ -63,6 +62,8 @@ This database uses a star schema with the following tables:
 - **month** INTEGER
 - **year** INTEGER
 - **weekday** VARCHAR(9)
+
+**Note:** Some column values exceed the default maximum length (256) of `VARCHAR` in Redshift, `VARCHAR(65535)` is used to account for unkown long strings.
 
 This schema supports complex queries and aggregations like:
 
