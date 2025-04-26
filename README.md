@@ -63,13 +63,7 @@ This database uses a star schema with the following tables:
 - **year** INTEGER
 - **weekday** VARCHAR(9)
 
-**Note:** Some column values exceed the default maximum length (256) of `VARCHAR` in Redshift, `VARCHAR(65535)` is used to account for unkown long strings.
-
-This schema supports complex queries and aggregations like:
-
-- Most played artists by user
-- User retention and subscription level trends
-- Total play time on specific days by user
+**Note:** Some column values exceed the default maximum length (256) of `VARCHAR` in Redshift, `VARCHAR(65535)` is used to account for unknown long strings.
 
 ## ETL Pipeline
 
