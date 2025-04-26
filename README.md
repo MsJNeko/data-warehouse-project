@@ -94,7 +94,7 @@ project-root/
 ├── dwh.cfg                # config file
 ├── etl.py                 # perform the ETL pipeline
 ├── sql_queries.py         # contains all SQL queries used in the project
-├── .gitignore             # Specifies ignored files for Git
+├── sample_queries.py      # queries row count for all tables and print output
 └── README.md              # Project documentation
 ```
 ## Usage
@@ -107,6 +107,15 @@ project-root/
 4. (Optional) Use Query Editor in the AWS Redshift console to check if the tables are properly created.
 5. Run `etl.py` to load data from S3 buckets to Redshift database.
 ## Sample Queries
-```
-```
+Run `sample_queries.py` to get row counts for all tables.
+
 **Output:**
+```
+Table: time, Row Count: 8023
+Table: artists, Row Count: 45237
+Table: songs, Row Count: 383950
+Table: users, Row Count: 105
+Table: songplays, Row Count: 6627
+Table: staging_events, Row Count: 8056
+Table: staging_songs, Row Count: 383950
+```
