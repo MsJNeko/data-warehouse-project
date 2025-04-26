@@ -24,8 +24,8 @@ This database uses a star schema with the following tables:
 - **song_id** VARCHAR(18)
 - **artist_id** VARCHAR(18)
 - **session_id** INTEGER
-- **location** VARCHAR
-- **user_agent** VARCHAR
+- **location** VARCHAR(65535)
+- **user_agent** VARCHAR(65535)
 
 **Dimension Tables**
 
@@ -40,7 +40,7 @@ This database uses a star schema with the following tables:
 `songs` - songs in music database
 
 - **song_id** VARCHAR(18)
-- **title** VARCHAR
+- **title** VARCHAR(65535)
 - **artist_id** VARCHAR(18)
 - **year** INTEGER
 - **duration** FLOAT
@@ -48,8 +48,9 @@ This database uses a star schema with the following tables:
 `artists` - artists in music database
 
 - **artist_id** VARCHAR(18)
-- **name** VARCHAR
-- **location** VARCHAR
+- **name** VARCHAR(65535)
+    - Some `artist_name` exceed the default maximum length (256) of `VARCHAR` in Redshift
+- **location** VARCHAR(65535)
 - **latitude** FLOAT
 - **longitude** FLOAT
 

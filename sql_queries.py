@@ -25,7 +25,7 @@ staging_events_table_create= ("""
 CREATE TABLE staging_events (
                         artist VARCHAR,
                         auth VARCHAR,
-                        fistName VARCHAR,
+                        firstName VARCHAR,
                         gender VARCHAR,
                         itemInSession INTEGER,
                         lastName VARCHAR,
@@ -50,10 +50,10 @@ CREATE TABLE staging_songs (
                         artist_id VARCHAR,
                         artist_latitude FLOAT,
                         artist_longitude FLOAT,
-                        artist_location VARCHAR,
-                        artist_name VARCHAR,
+                        artist_location VARCHAR(65535),
+                        artist_name VARCHAR(65535),
                         song_id VARCHAR,
-                        title VARCHAR,
+                        title VARCHAR(65535),
                         duration FLOAT,
                         year INTEGER
                             )
@@ -70,11 +70,10 @@ CREATE TABLE songplays (
                     song_id VARCHAR(18) NOT NULL,
                     artist_id VARCHAR(18) NOT NULL,
                     session_id INTEGER NOT NULL,
-                    location VARCHAR,
-                    user_agent VARCHAR
+                    location VARCHAR(65535),
+                    user_agent VARCHAR(65535)
                 )
-DISTSTYLE AUTO
-AUTO SORTKEY;
+DISTSTYLE AUTO;
 """)
 
 # dimension tables
@@ -86,32 +85,29 @@ CREATE TABLE users (
                     gender VARCHAR,
                     level VARCHAR(4) NOT NULL
                 )
-DISTSTYLE AUTO
-AUTO SORTKEY;
+DISTSTYLE AUTO;
 """)
 
 song_table_create = ("""
 CREATE TABLE songs (
                     song_id VARCHAR(18) PRIMARY KEY,
-                    title VARCHAR NOT NULL,
+                    title VARCHAR(65535) NOT NULL,
                     artist_id VARCHAR(18) NOT NULL,
                     year INTEGER NOT NULL,
                     duration FLOAT NOT NULL
                 )
-DISTSTYLE AUTO
-AUTO SORTKEY;
+DISTSTYLE AUTO;
 """)
 
 artist_table_create = ("""
 CREATE TABLE artists (
                 artist_id VARCHAR(18) PRIMARY KEY,
-                name VARCHAR NOT NULL,
-                location VARCHAR,
+                name VARCHAR(65535) NOT NULL,
+                location VARCHAR(65535),
                 latitude FLOAT,
                 longitude FLOAT
                 )
-DISTSTYLE AUTO
-AUTO SORTKEY;
+DISTSTYLE AUTO;
 """)
 
 time_table_create = ("""
@@ -124,8 +120,7 @@ CREATE TABLE time (
                 year INTEGER NOT NULL,
                 weekday VARCHAR(9) NOT NULL
                 )
-DISTSTYLE AUTO
-AUTO SORTKEY;
+DISTSTYLE AUTO;
 """)
 
 # COPY data from S3 to staging tables
@@ -211,7 +206,10 @@ WHERE ts IS NOT NULL
 
 # QUERY LISTS
 
-create_table_queries = [staging_events_table_create, staging_songs_table_create, songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
-drop_table_queries = [staging_events_table_drop, staging_songs_table_drop, songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
-copy_table_queries = [staging_events_copy, staging_songs_copy]
+#create_table_queries = [staging_events_table_create, staging_songs_table_create, songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
+create_table_queries = [staging_events_table_create, songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
+#drop_table_queries = [staging_events_table_drop, staging_songs_table_drop, songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
+drop_table_queries = [staging_events_table_drop, songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
+#copy_table_queries = [staging_events_copy, staging_songs_copy]
+copy_table_queries = [staging_events_copy]
 insert_table_queries = [songplay_table_insert, user_table_insert, song_table_insert, artist_table_insert, time_table_insert]
