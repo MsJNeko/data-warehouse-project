@@ -114,3 +114,6 @@ Table: songplays, Row Count: 6627
 Table: staging_events, Row Count: 8056
 Table: staging_songs, Row Count: 383950
 ```
+
+## Acknowledgements
+This project was developed as part of the Udacity Data Engineering with AWS Nanodegree, with guidance from course materials.
